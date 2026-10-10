@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SIGNAL Conversation Lab — Alternate Journey</title>
+<meta name="description" content="A guided SIGNAL journey for the October 29 Conversation Lab.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<style>
+:root{
+  --ink:#17353d;--ink-soft:#586a6e;--pine:#153f45;--pine2:#0c2e33;
+  --cream:#f8f1e5;--paper:#fffaf3;--wine:#7d3f56;--gold:#c9a35d;--rose:#f2e1df;
+  --line:#dfd2c0;--shadow:0 18px 60px rgba(36,48,46,.12);
+  --serif:Georgia,"Times New Roman",serif;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --script:"Segoe Script","Apple Chancery","Lucida Handwriting","Brush Script MT",cursive;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:var(--sans);color:var(--ink);background:
+radial-gradient(circle at 10% 5%,rgba(201,163,93,.18),transparent 25rem),
+linear-gradient(180deg,#fbf5ea,#f4ecdf 45%,#edf1ed 100%);overflow-x:hidden}
+a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}.shell{width:min(1120px,calc(100% - 28px));margin:auto}
+.nav{position:sticky;top:0;z-index:40;background:rgba(248,241,229,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(125,63,86,.1)}
+.nav-inner{height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px}.brandmark{width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;font:700 18px var(--serif);color:var(--wine)}
+.brand strong{font:700 18px var(--serif);letter-spacing:.05em}.brand small{display:block;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.nav-note{font-size:11px;color:var(--ink-soft)}
+.hero{min-height:760px;position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:
+linear-gradient(90deg,rgba(255,250,243,.98) 0 48%,rgba(255,250,243,.26) 72%),
+radial-gradient(circle at 80% 28%,rgba(201,163,93,.22),transparent 20rem),
+linear-gradient(135deg,#f8eee0,#ebdfcf)}
+.hero:after{content:"";position:absolute;inset:auto -5% -150px -5%;height:270px;background:rgba(255,255,255,.58);border-radius:50% 50% 0 0/40% 40% 0 0;transform:rotate(-2deg)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;min-height:760px;position:relative;z-index:2}
+.kicker{text-transform:uppercase;letter-spacing:.2em;font-size:10px;font-weight:900;color:var(--wine)}
+.hero h1{font:400 clamp(56px,8vw,92px)/.92 var(--serif);letter-spacing:-.045em;margin:18px 0 20px}.hero h1 em{font-family:var(--script);font-style:normal;color:var(--wine)}
+.hero-copy p{max-width:630px;font-size:17px;line-height:1.7;color:#526469}.hero-copy .strong{font:400 21px/1.5 var(--serif);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid var(--line);font-weight:850;cursor:pointer;background:#fff;color:var(--ink);transition:.2s}
+.btn:hover{transform:translateY(-2px)}.btn.wine{background:var(--wine);color:#fff;border-color:var(--wine);box-shadow:0 10px 24px rgba(125,63,86,.22)}.btn.pine{background:var(--pine);color:white;border-color:var(--pine)}.btn.gold{background:var(--gold);border-color:var(--gold)}
+.hero-art{position:relative;height:570px}.sun{position:absolute;width:430px;height:430px;border:1px solid rgba(201,163,93,.38);border-radius:50%;right:0;top:60px}.sun:after,.sun:before{content:"";position:absolute;border:1px solid rgba(201,163,93,.25);border-radius:50%;inset:42px}.sun:after{inset:92px}
+.mountain{position:absolute;right:-50px;bottom:20px;width:520px;height:320px;background:linear-gradient(145deg,#8b796b,#425d5b);clip-path:polygon(0 100%,18% 60%,34% 72%,52% 33%,64% 51%,78% 18%,100% 100%);opacity:.78}
+.woman-card{position:absolute;right:20px;bottom:45px;width:360px;height:430px;border-radius:42% 42% 24px 24px;background:
+radial-gradient(circle at 58% 26%,#f1cfb8 0 10%,transparent 10%),
+radial-gradient(circle at 58% 22%,#9b684e 0 16%,transparent 16%),
+linear-gradient(165deg,rgba(255,255,255,.5),rgba(125,63,86,.12));border:1px solid rgba(201,163,93,.25);box-shadow:var(--shadow)}
+.woman-card:after{content:"Noticing\A changes\A everything";white-space:pre;position:absolute;right:22px;bottom:35px;font:24px/1.25 var(--script);color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.35);transform:rotate(-5deg)}
+.flow-icons{position:relative;z-index:3;margin-top:-10px;padding:24px 0 8px}.flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.flow-item{text-align:center;color:var(--ink-soft);font-size:10px;letter-spacing:.13em;text-transform:uppercase}.flow-item b{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;margin:0 auto 8px;border:1px solid var(--gold);font:400 21px var(--serif);color:var(--wine)}
+.section{padding:86px 0;border-bottom:1px solid rgba(125,63,86,.08);position:relative;overflow:hidden}.section:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;filter:blur(4px);opacity:.18;pointer-events:none}
+.section:nth-of-type(even):before{left:-180px;top:10%;background:radial-gradient(circle,#1a5360,transparent 65%)}.section:nth-of-type(odd):before{right:-180px;bottom:5%;background:radial-gradient(circle,#c9a35d,transparent 65%)}
+.step-wrap{display:grid;grid-template-columns:.28fr .72fr;gap:38px;align-items:start}.step-side{padding-top:6px}.step-no{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--wine);font-weight:900}.step-letter{font:400 120px/1 var(--serif);color:rgba(125,63,86,.18);margin-top:8px}.step-main{position:relative;z-index:2}
+.step-main h2{font:400 clamp(42px,5.5vw,68px)/.98 var(--serif);letter-spacing:-.04em;margin:6px 0 8px}.step-main h3{font:400 26px/1.2 var(--serif);margin:0 0 16px}.step-main>p{color:var(--ink-soft);line-height:1.7;max-width:780px}.em{color:var(--wine);font-weight:800}
+.field{margin-top:22px}.field textarea,.field input{width:100%;border:1px solid #cfc1ae;border-radius:14px;background:rgba(255,255,255,.88);padding:15px;color:var(--ink);font-size:16px;box-shadow:inset 0 1px 2px rgba(0,0,0,.03)}.field textarea{min-height:122px;resize:vertical}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.chip{border:0;background:var(--rose);border-radius:999px;padding:8px 11px;font-size:11px;color:#694658}
+.choice-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:18px 0}.choice{border:1px solid var(--line);border-radius:14px;background:#fff;padding:14px 10px;text-align:center;font-size:11px;font-weight:750;cursor:pointer}.choice.selected{border-color:var(--wine);background:#faeef2;color:var(--wine)}
+.summary{background:#f7efe2}.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.sum{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:18px;padding:18px;min-height:132px}.sum b{display:block;color:var(--wine);font:400 20px var(--serif);margin-bottom:8px}.sum span{color:var(--ink-soft);font-size:13px;line-height:1.55}
+.registration{background:linear-gradient(135deg,#f8efe2,#fff9f2)}.reg-card{display:grid;grid-template-columns:.75fr 1.25fr;gap:30px;background:rgba(255,255,255,.62);border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow)}.reg-art{min-height:420px;border-radius:20px;background:
+linear-gradient(rgba(17,58,63,.12),rgba(17,58,63,.45)),
+linear-gradient(145deg,#426269,#a47a64);position:relative;overflow:hidden}.reg-art:after{content:"Bring\A the real thing.\A That's enough.";white-space:pre;position:absolute;right:24px;bottom:28px;color:#fff;font:28px/1.2 var(--script);transform:rotate(-3deg)}
+.event-pill{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0 20px}.event-pill span{font-size:11px;padding:8px 10px;border-radius:999px;background:#f7eadc;border:1px solid var(--line)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-grid input{width:100%;padding:13px;border:1px solid #cfbfab;border-radius:12px;background:#fff;font-size:16px}
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:12px;color:var(--ink-soft);font-size:13px}.consent input{margin-top:3px}
+.status{display:none;margin-top:12px;padding:12px;border-radius:12px;background:#eef3ef;color:var(--ink-soft);font-size:13px}
+.confirm{display:none;text-align:center;padding:92px 0;background:linear-gradient(135deg,#e9efe9,#f9efe2)}.confirm.show{display:block}.confirm h2{font:400 clamp(46px,6vw,76px)/.98 var(--serif);margin:0 0 14px}.confirm p{color:var(--ink-soft);max-width:680px;margin:0 auto 22px;line-height:1.7}.calendar-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+.footer-note{text-align:center;padding:26px;color:var(--ink-soft);font-size:11px}
+@media(max-width:900px){.hero-grid,.step-wrap,.reg-card{grid-template-columns:1fr}.hero{min-height:auto}.hero-grid{min-height:auto;padding:54px 0 34px}.hero-art{height:420px}.flow-grid{grid-template-columns:1fr 1fr}.step-letter{font-size:72px}.choice-grid{grid-template-columns:1fr 1fr}.summary-grid{grid-template-columns:1fr 1fr}.reg-art{min-height:300px}}
+@media(max-width:600px){.shell{width:min(100% - 20px,1120px)}.nav-note{display:none}.hero-grid{padding-top:34px}.hero h1{font-size:52px}.hero-art{height:330px}.woman-card{width:260px;height:315px;right:0}.sun{width:310px;height:310px}.mountain{width:390px;height:230px}.flow-grid{grid-template-columns:1fr 1fr}.section{padding:60px 0}.step-main h2{font-size:44px}.choice-grid,.summary-grid,.form-grid{grid-template-columns:1fr}.reg-card{padding:16px}.reg-art{min-height:260px}.btn{width:100%}.calendar-actions{display:grid;grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="shell nav-inner"><a class="brand" href="signal.html"><span class="brandmark">S</span><span><strong>SIGNAL</strong><small>Conversation Lab</small></span></a><div class="nav-note">October 29 • Introductory Experience</div><a class="btn wine" href="#register">Save My Spot</a></div></nav>
+
+<section class="hero">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <div class="kicker">October 29 • Introductory Experience</div>
+      <h1>What are you <em>noticing?</em></h1>
+      <p>We notice patterns. Frustrations. Repeated thoughts. Tension. Quiet inner nudges. And still, we stay busy, push through, and ignore them — until we wonder why nothing changes.</p>
+      <p>It's easy to fall into that trap.</p>
+      <p class="strong">You don't need the answer yet.<br>Just start with what you're noticing.</p>
+      <a class="btn wine" href="#s">Start the Conversation →</a>
+    </div>
+    <div class="hero-art"><div class="sun"></div><div class="mountain"></div><div class="woman-card"></div></div>
+  </div>
+</section>
+
+<div class="flow-icons"><div class="shell flow-grid">
+  <div class="flow-item"><b>◌</b>Slow down and listen</div><div class="flow-item"><b>◎</b>Notice what's real</div>
+  <div class="flow-item"><b>✦</b>Explore what matters</div><div class="flow-item"><b>→</b>Take a more aligned next step</div>
+</div></div>
+
+<section class="section" id="s"><div class="shell step-wrap">
+  <aside class="step-side"><div class="step-no">Step 1 of 6</div><div class="step-letter">S</div></aside>
+  <div class="step-main"><h2>S — Signal Spotting</h2><h3>What are you noticing?</h3><p>A signal doesn't have to be dramatic. It might be a pattern, a feeling, a frustration, a question, a person, or something that keeps repeating. <span class="em">Don't solve it yet. Just notice it.</span></p>
+  <div class="field"><textarea id="notice" placeholder="Something I keep noticing is..."></textarea></div>
+  <div class="chips"><span class="chip">A pattern</span><span class="chip">A feeling</span><span class="chip">A person</span><span class="chip">A frustration</span><span class="chip">A question</span><span class="chip">Something repeating</span></div></div>
+</div></section>
+
+<section class="section" id="i"><div class="shell step-wrap">
+  <aside class="step-side"><div class="step-no">Step 2 of 6</div><div class="step-letter">I</div></aside>
+  <div class="step-main"><h2>I — Compost Wisdom</h2><h3>What does your experience already know about this?</h3><p>Your experience holds wisdom. Take a moment to reflect. Have you seen this before? What happened last time? What have you learned? What feels familiar?</p>
+  <div class="field"><textarea id="wisdom" placeholder="Something I already know from experience is..."></textarea></div></div>
+</div></section>
+
+<section class="section" id="g"><div class="shell step-wrap">
+  <aside class="step-side"><div class="step-no">Step 3 of 6</div><div class="step-letter">G</div></aside>
+  <div class="step-main"><h2>G — Life Triage</h2><h3>What actually needs your attention?</h3><p>Not every signal needs the same response. What feels true for this right now?</p>
+  <div class="choice-grid">
+    <button class="choice" data-choice="This needs action now">This needs action now</button>
+    <button class="choice" data-choice="This needs a conversation">This needs a conversation</button>
+    <button class="choice" data-choice="This needs more information">This needs more information</button>
+    <button class="choice" data-choice="This may just be noise">This may just be noise</button>
+    <button class="choice" data-choice="I'm still not sure">I'm still not sure</button>
+  </div>
+  <div class="field"><textarea id="why" placeholder="Why does this feel important right now?"></textarea></div></div>
+</div></section>
+
+<section class="section" id="n"><div class="shell step-wrap">
+  <aside class="step-side"><div class="step-no">Step 4 of 6</div><div class="step-letter">N</div></aside>
+  <div class="step-main"><h2>N — Nurture the Long Harvest</h2><h3>What needs time?</h3><p>Not everything needs to be fixed today. Some things grow slowly. Growth requires space, patience, observation, and time.</p>
+  <div class="field"><textarea id="nurture" placeholder="I can give this time by..."></textarea></div></div>
+</div></section>
+
+<section class="section" id="a"><div class="shell step-wrap">
+  <aside class="step-side"><div class="step-no">Step 5 of 6</div><div class="step-letter">A</div></aside>
+  <div class="step-main"><h2>A — Act: Signal → Solution</h2><h3>What will you do with what you know?</h3><p>Even small steps create movement. What feels aligned right now?</p>
+  <div class="chips"><span class="chip">Have a conversation</span><span class="chip">Ask a question</span><span class="chip">Set a boundary</span><span class="chip">Gather information</span><span class="chip">Make a decision</span><span class="chip">Wait intentionally</span></div>
+  <div class="field"><textarea id="action" placeholder="My next step could be..."></textarea></div></div>
+</div></section>
+
+<section class="section" id="l"><div class="shell step-wrap">
+  <aside class="step-side"><div class="step-no">Step 6 of 6</div><div class="step-letter">L</div></aside>
+  <div class="step-main"><h2>L — Lesson</h2><h3>What did this teach you?</h3><p>The point isn't only solving one situation. It's learning how to recognize yourself and your patterns sooner next time.</p>
+  <div class="field"><textarea id="lesson" placeholder="What I'm taking from this is..."></textarea></div>
+  <div style="margin-top:18px"><button class="btn pine" id="buildSummary">See what became clearer →</button></div></div>
+</div></section>
+
+<section class="section summary" id="summary"><div class="shell">
+  <div class="kicker">Your reflection</div><h2 style="font:400 58px/1 var(--serif);margin:8px 0 10px">Here's what became clearer.</h2>
+  <p style="max-width:760px;color:var(--ink-soft);line-height:1.7">It's not about having it all figured out. It's about listening, understanding, and choosing what's next — with more clarity and self-trust.</p>
+  <div class="summary-grid">
+    <div class="sum"><b>What you noticed</b><span id="sumNotice">Your initial signal or observation.</span></div>
+    <div class="sum"><b>What experience already knew</b><span id="sumWisdom">Wisdom from your past experience.</span></div>
+    <div class="sum"><b>What needs attention</b><span id="sumTriage">Your current assessment.</span></div>
+    <div class="sum"><b>What needs time</b><span id="sumNurture">What can unfold naturally.</span></div>
+    <div class="sum"><b>Your next step</b><span id="sumAction">The action you're considering.</span></div>
+    <div class="sum"><b>What you learned</b><span id="sumLesson">The deeper insight.</span></div>
+  </div>
+</div></section>
+
+<section class="section registration" id="register"><div class="shell reg-card">
+  <div class="reg-art"></div>
+  <div>
+    <div class="kicker">Bring this with you.</div><h2 style="font:400 52px/1 var(--serif);margin:8px 0 10px">Save your spot.</h2>
+    <p style="color:var(--ink-soft);line-height:1.7">Join us for a live, guided SIGNAL Conversation Lab — a warm, supportive space to explore what you're noticing and discover what wants to happen next.</p>
+    <div class="event-pill"><span>📅 October 29</span><span>🕕 6:00–7:30 PM EST</span><span>✦ SIGNAL Conversation Lab</span></div>
+    <div class="form-grid"><input id="first" placeholder="First name" autocomplete="given-name"><input id="last" placeholder="Last name" autocomplete="family-name"><input id="email" type="email" placeholder="Email address" autocomplete="email"><input id="mobile" inputmode="tel" placeholder="Mobile number" autocomplete="tel"></div>
+    <label class="consent"><input id="share" type="checkbox" checked><span>Share my reflection with Jaymie before the Lab so the conversation can begin deeper.</span></label>
+    <div class="status" id="status"></div>
+    <div style="margin-top:18px"><button class="btn wine" id="registerBtn">Save My Spot →</button></div>
+  </div>
+</div></section>
+
+<section class="confirm" id="confirm"><div class="shell">
+  <div class="kicker">You're registered</div>
+  <h2>Come curious.<br>Leave with greater clarity.</h2>
+  <p>Your spot is saved for the SIGNAL Conversation Lab. You don't need a polished story — just bring the thing that still has energy, tension, curiosity, or uncertainty around it.</p>
+  <p style="font:400 22px var(--serif);color:var(--wine)">The conversation has already started.</p>
+  <div class="calendar-actions">
+    <a class="btn gold" id="googleCalendar" target="_blank" rel="noopener">Add to Google Calendar</a>
+    <a class="btn pine" href="signal-oct29.ics" download>Add to Apple / Outlook Calendar</a>
+  </div>
+</div></section>
+<div class="footer-note">SIGNAL Framework™ • Jaymie Chapple • October 29 Conversation Lab</div>
+
+<script>
+const FORM_ENDPOINT="https://docs.google.com/forms/d/e/1FAIpQLSevSeZiBJRZMCleMm2TcJQOjP_pS94YrMBQhaaKgrffP9Sdeg/formResponse";
+const F={contactId:"entry.301762151",firstName:"entry.58780466",lastName:"entry.1559895487",email:"entry.1787733184",mobile:"entry.610731937",notice:"entry.1179189163",signalVsNoise:"entry.1019833845",signalUnderSignal:"entry.800933330",needs:"entry.88849145",grace:"entry.821090000",conversation:"entry.1932546411",sharePreference:"entry.946346664",event:"entry.84973371",source:"entry.276495509",startedAt:"entry.1206892229",signalCompleted:"entry.303119"};
+const key="signalJourneyAltV1", idKey="signalRegistrantIdV1", startedKey="signalStartedAtV1";
+let triage="";
+let registrantId=localStorage.getItem(idKey);
+if(!registrantId){registrantId="SIG-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,7).toUpperCase();localStorage.setItem(idKey,registrantId)}
+if(!localStorage.getItem(startedKey))localStorage.setItem(startedKey,new Date().toISOString());
+const $=id=>document.getElementById(id), val=id=>($(id)?.value||"").trim();
+function data(){return{registrantId,startedAt:localStorage.getItem(startedKey),firstName:val("first"),lastName:val("last"),email:val("email"),mobile:val("mobile"),notice:val("notice"),wisdom:val("wisdom"),triage,why:val("why"),nurture:val("nurture"),action:val("action"),lesson:val("lesson"),sharePreference:$("share").checked?"Full Reflection":"Private",event:"Oct 29 Conversation Lab",source:"SIGNAL Journey Alternate"}}
+function save(){localStorage.setItem(key,JSON.stringify(data()))}
+document.querySelectorAll("textarea,input").forEach(el=>el.addEventListener("input",save));
+document.querySelectorAll(".choice").forEach(btn=>btn.addEventListener("click",()=>{triage=btn.dataset.choice;document.querySelectorAll(".choice").forEach(x=>x.classList.remove("selected"));btn.classList.add("selected");save()}));
+function fillSummary(){const d=data();$("sumNotice").textContent=d.notice||"Still forming.";$("sumWisdom").textContent=d.wisdom||"Still forming.";$("sumTriage").textContent=(d.triage?d.triage+". ":"")+(d.why||"Still forming.");$("sumNurture").textContent=d.nurture||"Still forming.";$("sumAction").textContent=d.action||"Still forming.";$("sumLesson").textContent=d.lesson||"Still forming."}
+$("buildSummary").addEventListener("click",()=>{save();fillSummary();$("summary").scrollIntoView({behavior:"smooth"})});
+(function restore(){try{const d=JSON.parse(localStorage.getItem(key)||"null");if(!d)return;const map={first:"firstName",last:"lastName",email:"email",mobile:"mobile",notice:"notice",wisdom:"wisdom",why:"why",nurture:"nurture",action:"action",lesson:"lesson"};Object.entries(map).forEach(([id,k])=>{if($(id)&&d[k])$(id).value=d[k]});triage=d.triage||"";if(triage)document.querySelectorAll(".choice").forEach(x=>{if(x.dataset.choice===triage)x.classList.add("selected")});if(d.sharePreference==="Private")$("share").checked=false;fillSummary()}catch(e){}})();
+function status(msg){$("status").textContent=msg;$("status").style.display="block"}
+function add(form,name,value){const i=document.createElement("input");i.type="hidden";i.name=name;i.value=value||"";form.appendChild(i)}
+$("registerBtn").addEventListener("click",()=>{
+  const d=data();
+  if(!d.notice){status("Please start with what you're noticing.");$("notice").scrollIntoView({behavior:"smooth",block:"center"});return}
+  if(!d.firstName){status("Please enter your first name.");$("first").focus();return}
+  if(!d.lastName){status("Please enter your last name.");$("last").focus();return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)){status("Please enter a valid email address.");$("email").focus();return}
+  if(!d.mobile){status("Please enter your mobile number.");$("mobile").focus();return}
+  save();fillSummary();
+  const b=$("registerBtn");b.disabled=true;b.textContent="Saving your spot…";
+  let sink=document.querySelector('iframe[name="signalAltSink"]');
+  if(!sink){sink=document.createElement("iframe");sink.name="signalAltSink";sink.style.cssText="width:0;height:0;border:0;position:absolute;left:-9999px";document.body.appendChild(sink)}
+  const form=document.createElement("form");form.method="POST";form.action=FORM_ENDPOINT;form.target="signalAltSink";
+  const priv=d.sharePreference==="Private";
+  add(form,F.contactId,d.registrantId);add(form,F.firstName,d.firstName);add(form,F.lastName,d.lastName);add(form,F.email,d.email);add(form,F.mobile,d.mobile);
+  add(form,F.notice,priv?"":d.notice);
+  add(form,F.signalVsNoise,priv?"":d.triage);
+  add(form,F.signalUnderSignal,priv?"":d.wisdom);
+  add(form,F.needs,priv?"":d.why);
+  add(form,F.grace,priv?"":d.nurture);
+  add(form,F.conversation,priv?"":("Next step: "+d.action+" | Lesson: "+d.lesson));
+  add(form,F.sharePreference,d.sharePreference);add(form,F.event,d.event);add(form,F.source,d.source);add(form,F.startedAt,d.startedAt);add(form,F.signalCompleted,"Yes");
+  document.body.appendChild(form);form.submit();setTimeout(()=>form.remove(),800);
+  setTimeout(()=>{b.disabled=false;b.textContent="Save My Spot →";$("confirm").classList.add("show");$("confirm").scrollIntoView({behavior:"smooth",block:"start"})},1200);
+});
+const g=new URL("https://calendar.google.com/calendar/render");
+g.searchParams.set("action","TEMPLATE");
+g.searchParams.set("text","SIGNAL Conversation Lab");
+g.searchParams.set("dates","20261029T220000Z/20261029T233000Z");
+g.searchParams.set("details","Come curious. Leave with greater clarity. SIGNAL Conversation Lab with Jaymie Chapple.");
+$("googleCalendar").href=g.toString();
+</script>
+</body>
+</html>
