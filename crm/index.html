@@ -6,7 +6,7 @@
 <body>
 <div class="app"><aside class="side"><div class="brand"><div class="mark">T</div><div><b>TEHFL CRM</b><small>Private operating system</small></div></div>
 <div class="nav"><button class="active" data-v="home">Home</button><button data-v="people">People</button><button data-v="follow">Follow-Up</button><button data-v="audience">Audience Builder</button><button data-v="campaigns">Campaigns</button><button data-v="events">Events</button><button data-v="activity">Activity</button></div><div class="foot" id="status">Bridge setup pending</div></aside>
-<main class="main"><header class="top"><div><div class="eyebrow">TEHFL</div><h1 id="title">CRM Home</h1></div><div class="actions"><div id="googleSignIn"></div><button class="btn" id="refresh">Refresh</button><button class="btn primary" id="add">+ Add Contact</button></div></header>
+<main class="main"><header class="top"><div><div class="eyebrow">TEHFL</div><h1 id="title">CRM Home</h1></div><div class="actions"><div id="authWrap"><div id="authState" style="font-size:12px;color:#607176;margin-bottom:4px">Loading secure sign-in…</div><div id="googleSignIn"></div></div><button class="btn" id="refresh">Refresh</button><button class="btn primary" id="add">+ Add Contact</button></div></header>
 <div class="banner" id="banner"><b>Dashboard shell is live.</b> One Google-side API bridge still needs to be deployed before this screen can read/write the protected CRM directly.</div>
 <section class="view active" id="home"><div class="metrics"><div class="metric"><span>Total People</span><strong id="mt">0</strong></div><div class="metric"><span>SIGNAL Registrants</span><strong id="ms">0</strong></div><div class="metric"><span>Needs Follow-Up</span><strong id="mf">0</strong></div><div class="metric"><span>High / Hot</span><strong id="mp">0</strong></div></div><div class="grid"><div class="panel"><div class="panelhead"><div><div class="eyebrow">Today</div><h2>Needs attention</h2></div></div><div id="attention" class="empty">No live CRM data connected yet.</div></div><div class="panel"><div class="panelhead"><div><div class="eyebrow">Upcoming</div><h2>Events</h2></div></div><div class="event"><div><b>SIGNAL Conversation Lab</b><span>Oct 29, 2026 · 6:00–7:30 PM EST</span></div><span class="pill">Upcoming</span></div></div></div></section>
 <section class="view" id="people"><div class="toolbar"><input id="search" placeholder="Search name, email, phone, tags..."><select id="interest"><option value="">All interests</option><option>SIGNAL</option><option>Beyond the Stethoscope</option><option>TEHFL</option><option>Healthcare Leadership</option><option>Speaking</option></select><select id="priority"><option value="">All priorities</option><option>Hot</option><option>High</option><option>Normal</option><option>Low</option></select></div><div class="panel table"><table><thead><tr><th>Name</th><th>Email</th><th>Interest</th><th>Status</th><th>Owner</th><th>Priority</th></tr></thead><tbody id="pt"><tr><td colspan="6">No live CRM data connected yet.</td></tr></tbody></table></div></section>
@@ -30,7 +30,40 @@ function render(){var m=state.metrics||{};document.getElementById("mt").textCont
 function renderPeople(){var q=document.getElementById("search").value.toLowerCase(),i=document.getElementById("interest").value,p=document.getElementById("priority").value;var rows=(state.people||[]).filter(function(x){var h=[x.firstName,x.lastName,x.email,x.mobile,x.tags].join(" ").toLowerCase();return(!q||h.indexOf(q)>=0)&&(!i||x.interest===i)&&(!p||x.priority===p)});document.getElementById("pt").innerHTML=rows.length?rows.map(function(x){return "<tr><td>"+esc((x.firstName||"")+" "+(x.lastName||""))+"</td><td>"+esc(x.email)+"</td><td>"+esc(x.interest)+"</td><td>"+esc(x.lifecycle)+"</td><td>"+esc(x.owner)+"</td><td>"+esc(x.priority)+"</td></tr>"}).join(""):'<tr><td colspan="6">No matching contacts.</td></tr>'}
 function renderFollow(){var rows=state.followup||[],el=document.getElementById("fl");el.innerHTML=rows.length?rows.map(function(x){return '<div class="event"><div><b>'+esc(x.name)+'</b><span>'+esc(x.email)+' · '+esc(x.interest)+'</span></div><span class="pill">'+esc(x.priority||"Normal")+"</span></div>"}).join(""):"Nobody currently needs follow-up.";document.getElementById("attention").innerHTML=rows.length?rows.slice(0,5).map(function(x){return '<div class="event"><div><b>'+esc(x.name)+'</b><span>'+esc(x.email)+"</span></div></div>"}).join(""):"Nobody currently needs follow-up."}
 function renderAudience(){var v={i:document.getElementById("ai").value,l:document.getElementById("al").value,o:document.getElementById("ao").value,f:document.getElementById("af").value};document.getElementById("ac").textContent=(state.people||[]).filter(function(x){return(!v.i||x.interest===v.i)&&(!v.l||x.lifecycle===v.l)&&(!v.o||x.owner===v.o)&&(!v.f||x.followUpStatus===v.f)}).length}
-["search","interest","priority"].forEach(function(id){document.getElementById(id).oninput=renderPeople});["ai","al","ao","af"].forEach(function(id){document.getElementById(id).onchange=renderAudience});function handleGoogleSignIn(r){googleCredential=r.credential||"";document.getElementById("status").textContent="Signed in";load()}
-window.onload=function(){if(window.google&&google.accounts&&google.accounts.id){google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:handleGoogleSignIn});google.accounts.id.renderButton(document.getElementById("googleSignIn"),{theme:"outline",size:"large"});google.accounts.id.prompt();}};
-document.getElementById("refresh").onclick=load;var modal=document.getElementById("modal");document.getElementById("add").onclick=function(){modal.classList.add("open")};document.getElementById("close").onclick=document.getElementById("cancel").onclick=function(){modal.classList.remove("open")};document.getElementById("form").onsubmit=async function(e){e.preventDefault();try{await api("addContact",{contact:Object.fromEntries(new FormData(e.target).entries())});e.target.reset();modal.classList.remove("open");load()}catch(err){alert(err.message)}};load();
-</script></body></html>
+["search","interest","priority"].forEach(function(id){document.getElementById(id).oninput=renderPeople});["ai","al","ao","af"].forEach(function(id){document.getElementById(id).onchange=renderAudience});function handleGoogleSignIn(r){
+  googleCredential=r.credential||"";
+  document.getElementById("status").textContent="Signed in";
+  var s=document.getElementById("authState");
+  if(s)s.textContent="Google account connected";
+  load();
+}
+function initGoogleSignIn(attempt){
+  attempt=attempt||0;
+  var s=document.getElementById("authState");
+  if(window.google&&google.accounts&&google.accounts.id){
+    google.accounts.id.initialize({
+      client_id:GOOGLE_CLIENT_ID,
+      callback:handleGoogleSignIn,
+      auto_select:false,
+      cancel_on_tap_outside:false
+    });
+    var host=document.getElementById("googleSignIn");
+    host.innerHTML="";
+    google.accounts.id.renderButton(host,{
+      theme:"outline",
+      size:"large",
+      text:"signin_with",
+      shape:"pill"
+    });
+    if(s)s.textContent="Sign in to open the CRM";
+    return;
+  }
+  if(attempt<40){
+    setTimeout(function(){initGoogleSignIn(attempt+1)},250);
+  }else{
+    if(s)s.textContent="Google Sign-In failed to load — refresh this page.";
+    document.getElementById("banner").textContent="Google Sign-In did not load. Refresh the page; if it remains blocked, send me this exact message.";
+  }
+}
+window.addEventListener("load",function(){initGoogleSignIn(0)});
+document.getElementById("refresh").onclick=load;var modal=document.getElementById("modal");document.getElementById("add").onclick=function(){modal.classList.add("open")};document.getElementById("close").onclick=document.getElementById("cancel").onclick=function(){modal.classList.remove("open")};document.getElementById("form").onsubmit=async function(e){e.preventDefault();try{await api("addContact",{contact:Object.fromEntries(new FormData(e.target).entries())});e.target.reset();modal.classList.remove("open");load()}catch(err){alert(err.message)}};</script></body></html>
