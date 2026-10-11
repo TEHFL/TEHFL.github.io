@@ -1,1 +1,169 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0; url=front-door.html"><title>SIGNAL Conversation Lab</title><script>location.replace("front-door.html")</script></head><body><p><a href="front-door.html">Continue to SIGNAL Conversation Lab</a></p></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SIGNAL Front Door — Mobile</title>
+<meta name="description" content="Bring what's on your mind. Start the conversation.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<style>
+body{background:linear-gradient(180deg,#faf6ee 0%,#f2eee5 45%,#eef3f0 100%)}
+.mobile-shell{max-width:680px;margin:0 auto;padding:12px 12px 48px}
+.mobile-top{position:sticky;top:0;z-index:20;background:rgba(248,242,231,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(123,60,84,.1);padding:10px 12px;margin:0 -12px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mobile-brand{display:flex;align-items:center;gap:9px;min-width:0}
+.mobile-brand .brand-mark{width:30px;height:30px;flex:0 0 30px}
+.mobile-brand strong{font:700 16px var(--serif);letter-spacing:.04em}
+.mobile-brand small{display:block;font-size:8px;color:var(--ink-soft);letter-spacing:.11em;text-transform:uppercase}
+.mobile-progress{font-size:10px;color:var(--ink-soft);white-space:nowrap}
+.mcard{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:20px 17px;margin:0 0 14px;box-shadow:0 10px 28px rgba(22,53,61,.08)}
+.mcard .fd-meta{margin-bottom:6px}
+.mcard h2{font:32px/1.08 var(--serif);margin:8px 0 10px}
+.mcard p{color:var(--ink-soft);line-height:1.6}
+.mcard textarea,.mcard input{font-size:16px}
+.mcard textarea{min-height:120px}
+.mchoices{display:grid;grid-template-columns:1fr;gap:9px}
+.mchoice{border:1px solid var(--line);background:#fff;padding:13px;border-radius:14px;text-align:left;font-weight:800;color:var(--ink);cursor:pointer}
+.mchoice.selected{border-color:var(--wine);background:#fbf1f4}
+.mgrid{display:grid;grid-template-columns:1fr;gap:9px}
+.mactions{display:grid;grid-template-columns:1fr;gap:8px;margin-top:14px}
+.mactions .btn{width:100%}
+.msummary{display:grid;gap:9px}
+.msum{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}
+.msum b{display:block;color:var(--wine);font-size:10px;text-transform:uppercase;letter-spacing:.09em;margin-bottom:5px}
+#success{display:none}
+#formStatus{display:none;margin-top:10px}
+.consent{display:flex;gap:10px;align-items:flex-start;color:var(--ink-soft);font-size:13px;margin-top:12px}
+.consent input{width:auto;margin-top:3px}
+@media(min-width:540px){.mgrid.two{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="mobile-shell">
+  <div class="mobile-top">
+    <a class="mobile-brand" href="signal.html">
+      <div class="brand-mark">S</div>
+      <div><strong>SIGNAL</strong><small>Oct 29 Conversation Lab</small></div>
+    </a>
+    <div class="mobile-progress">Mobile registration</div>
+  </div>
+
+  <section class="mcard">
+    <div class="fd-meta">Welcome</div>
+    <h2>Bring what's on your mind.</h2>
+    <p>Start with one real thing that keeps asking for your attention. You do not need to have the answer yet.</p>
+    <div class="note">This phone version is intentionally simple: one page, no sliding panels, no browser-heavy transitions.</div>
+  </section>
+
+  <section class="mcard">
+    <div class="fd-meta">1 • Signal Spotting</div>
+    <h2>What are you noticing?</h2>
+    <textarea id="notice" placeholder="Something I keep noticing is..."></textarea>
+  </section>
+
+  <section class="mcard">
+    <div class="fd-meta">Save your place</div>
+    <h2>What should we call you?</h2>
+    <div class="mgrid two">
+      <input id="first" placeholder="First name" autocomplete="given-name">
+      <input id="email" type="email" placeholder="Email" autocomplete="email">
+    </div>
+  </section>
+
+  <section class="mcard">
+    <div class="fd-meta">2 • Signal or Noise?</div>
+    <h2>Does this deserve your attention — or is it simply competing for it?</h2>
+    <div class="mchoices">
+      <button class="mchoice" data-choice="This keeps repeating">This keeps repeating</button>
+      <button class="mchoice" data-choice="This feels unusually important">This feels unusually important</button>
+      <button class="mchoice" data-choice="This may just be noise">This may just be noise</button>
+      <button class="mchoice" data-choice="I do not know yet">I don't know yet</button>
+    </div>
+  </section>
+
+  <section class="mcard">
+    <div class="fd-meta">3 • The Signal Under the Signal</div>
+    <h2>What may be underneath the first thing you noticed?</h2>
+    <textarea id="under" placeholder="Underneath this, I wonder if..."></textarea>
+  </section>
+
+  <section class="mcard">
+    <div class="fd-meta">4 • Identify Needs</div>
+    <h2>What might this be asking from you right now?</h2>
+    <textarea id="needs" placeholder="What this may need is..."></textarea>
+  </section>
+
+  <section class="mcard">
+    <div class="fd-meta">5 • Nurture the Long Harvest</div>
+    <h2>What needs time? Allow it.</h2>
+    <textarea id="grace" placeholder="I can give this time by..."></textarea>
+  </section>
+
+  <section class="mcard">
+    <div class="fd-meta">6 • Bring it with you</div>
+    <h2>What would you want to talk through with real people?</h2>
+    <textarea id="conversation" placeholder="The conversation I want to bring is..."></textarea>
+  </section>
+
+  <section class="mcard">
+    <div class="fd-meta">Conversation Lab registration</div>
+    <h2>October 29 • 6:00–7:30 PM EST</h2>
+    <div class="mgrid two">
+      <input id="last" placeholder="Last name" autocomplete="family-name">
+      <input id="mobile" inputmode="tel" placeholder="Mobile number" autocomplete="tel">
+    </div>
+    <label class="consent"><input id="share" type="checkbox" checked><span>Share my SIGNAL reflection with Jaymie before the Lab so the conversation can begin deeper.</span></label>
+    <div id="formStatus" class="note"></div>
+    <div class="mactions"><button class="btn primary" id="registerBtn" type="button">Register + save SIGNAL →</button></div>
+  </section>
+
+  <section class="mcard" id="success">
+    <div class="fd-meta">Registration submitted</div>
+    <h2>Come curious. Leave with greater clarity.</h2>
+    <div class="note" id="successText"></div>
+    <div class="mactions"><a class="btn" href="signal.html">Back to SIGNAL</a></div>
+  </section>
+</div>
+
+<script>
+const FORM_ENDPOINT="https://docs.google.com/forms/d/e/1FAIpQLSevSeZiBJRZMCleMm2TcJQOjP_pS94YrMBQhaaKgrffP9Sdeg/formResponse";
+const F={contactId:"entry.301762151",firstName:"entry.58780466",lastName:"entry.1559895487",email:"entry.1787733184",mobile:"entry.610731937",notice:"entry.1179189163",signalVsNoise:"entry.1019833845",signalUnderSignal:"entry.800933330",needs:"entry.88849145",grace:"entry.821090000",conversation:"entry.1932546411",sharePreference:"entry.946346664",event:"entry.84973371",source:"entry.276495509",startedAt:"entry.1206892229",signalCompleted:"entry.303119"};
+const key="signalFrontDoorMobileV1";
+const idKey="signalRegistrantIdV1";
+const startedKey="signalStartedAtV1";
+let signalChoice="";
+let registrantId=localStorage.getItem(idKey);
+if(!registrantId){registrantId="SIG-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,7).toUpperCase();localStorage.setItem(idKey,registrantId)}
+if(!localStorage.getItem(startedKey))localStorage.setItem(startedKey,new Date().toISOString());
+const $=id=>document.getElementById(id);
+const val=id=>($(id)?.value||"").trim();
+function state(){return{registrantId,startedAt:localStorage.getItem(startedKey),firstName:val("first"),lastName:val("last"),email:val("email"),mobile:val("mobile"),notice:val("notice"),signalVsNoise:signalChoice,signalUnderSignal:val("under"),needs:val("needs"),grace:val("grace"),conversation:val("conversation"),sharePreference:$("share").checked?"Full Reflection":"Private",event:"Oct 29 Conversation Lab",source:"SIGNAL Front Door Mobile"}}
+function save(){localStorage.setItem(key,JSON.stringify(state()))}
+document.querySelectorAll("textarea,input").forEach(el=>el.addEventListener("input",save));
+document.querySelectorAll(".mchoice").forEach(btn=>btn.addEventListener("click",()=>{signalChoice=btn.dataset.choice;document.querySelectorAll(".mchoice").forEach(x=>x.classList.remove("selected"));btn.classList.add("selected");save()}));
+(function restore(){try{const d=JSON.parse(localStorage.getItem(key)||"null");if(!d)return;const map={first:"firstName",last:"lastName",email:"email",mobile:"mobile",notice:"notice",under:"signalUnderSignal",needs:"needs",grace:"grace",conversation:"conversation"};Object.entries(map).forEach(([id,k])=>{if($(id)&&d[k])$(id).value=d[k]});signalChoice=d.signalVsNoise||"";if(signalChoice)document.querySelectorAll(".mchoice").forEach(x=>{if(x.dataset.choice===signalChoice)x.classList.add("selected")});if(d.sharePreference==="Private")$("share").checked=false}catch(e){}})();
+function status(msg){$("formStatus").textContent=msg;$("formStatus").style.display="block"}
+function add(form,name,value){const i=document.createElement("input");i.type="hidden";i.name=name;i.value=value||"";form.appendChild(i)}
+async function submit(){
+  const d=state();
+  if(!d.notice){status("Please answer the first question: What are you noticing?");$("notice").scrollIntoView({behavior:"smooth",block:"center"});return}
+  if(!d.firstName){status("Please enter your first name.");$("first").focus();return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)){status("Please enter a valid email address.");$("email").focus();return}
+  if(!d.lastName){status("Please enter your last name.");$("last").focus();return}
+  if(!d.mobile){status("Please enter your mobile number.");$("mobile").focus();return}
+  save();
+  const b=$("registerBtn");b.disabled=true;b.textContent="Registering…";
+  let sink=document.querySelector('iframe[name="googleFormMobileSink"]');
+  if(!sink){sink=document.createElement("iframe");sink.name="googleFormMobileSink";sink.style.cssText="width:0;height:0;border:0;position:absolute;left:-9999px";document.body.appendChild(sink)}
+  const form=document.createElement("form");form.method="POST";form.action=FORM_ENDPOINT;form.target="googleFormMobileSink";
+  const priv=d.sharePreference==="Private";
+  add(form,F.contactId,d.registrantId);add(form,F.firstName,d.firstName);add(form,F.lastName,d.lastName);add(form,F.email,d.email);add(form,F.mobile,d.mobile);
+  add(form,F.notice,priv?"":d.notice);add(form,F.signalVsNoise,priv?"":d.signalVsNoise);add(form,F.signalUnderSignal,priv?"":d.signalUnderSignal);add(form,F.needs,priv?"":d.needs);add(form,F.grace,priv?"":d.grace);add(form,F.conversation,priv?"":d.conversation);
+  add(form,F.sharePreference,d.sharePreference);add(form,F.event,d.event);add(form,F.source,d.source);add(form,F.startedAt,d.startedAt);add(form,F.signalCompleted,"Yes");
+  document.body.appendChild(form);form.submit();setTimeout(()=>form.remove(),800);
+  setTimeout(()=>{b.disabled=false;b.textContent="Register + save SIGNAL →";$("successText").innerHTML="<strong>"+d.firstName+" "+d.lastName+"</strong><br>"+d.email+" • "+d.mobile+"<br><br>Status: Registered • Share preference: "+d.sharePreference;$("success").style.display="block";$("success").scrollIntoView({behavior:"smooth",block:"start"});},1200);
+}
+$("registerBtn").addEventListener("click",submit);
+</script>
+</body>
+</html>
