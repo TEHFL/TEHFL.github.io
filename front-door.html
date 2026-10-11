@@ -1,218 +1,65 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SIGNAL Front Door</title><meta name="description" content="Bring what’s on your mind. Start the conversation."><link rel="stylesheet" href="styles.css"><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"></head><body><script>if(window.matchMedia&&window.matchMedia("(max-width: 700px)").matches){window.location.replace("front-door-mobile.html")}</script>
-<nav class="nav"><div class="nav-inner"><a class="brand" href="signal.html"><div class="brand-mark">S</div><div><div class="brand-text">SIGNAL</div><div class="brand-sub">Front Door</div></div></a><div class="small">Your progress is saved as you go.</div><a class="btn" href="signal.html">About SIGNAL</a></div></nav>
-<div class="frontdoor-wrap"><div class="fd-card">
-<div class="fd-step active" id="fd0"><div class="fd-meta">Welcome</div><h2>Bring what’s on your mind.</h2><p>Not what sounds important. Not what you think you should talk about. Just the thing that naturally keeps asking for your attention.</p><div class="note">Start with one real thing that has your attention. Your progress will be saved so you can keep moving without starting over.</div><div class="fd-actions"><span></span><button class="btn primary" onclick="go(1)">Start the conversation →</button></div></div>
-<div class="fd-step" id="fd1"><div class="fd-meta">1 • Signal Spotting</div><h2>What are you noticing?</h2><p>Do not explain it perfectly yet. Just name what keeps surfacing.</p><textarea id="notice" placeholder="Something I keep noticing is..."></textarea><div class="fd-actions"><button class="btn" onclick="go(0)">← Back</button><button class="btn primary" onclick="need('notice',2)">Continue →</button></div></div>
-<div class="fd-step" id="fd2"><div class="fd-meta">Save your place</div><h2>What should we call you?</h2><p>We ask for just enough information to save your progress on this device. The rest can wait until registration.</p><div class="summary-grid"><input id="first" placeholder="First name" autocomplete="given-name"><input id="email" type="email" placeholder="Email" autocomplete="email"></div><div class="note" id="contactError" style="display:none;margin-top:12px"></div><div class="fd-actions"><button class="btn" onclick="go(1)">← Back</button><button class="btn primary" onclick="contactNext()">Save & continue →</button></div></div>
-<div class="fd-step" id="fd3"><div class="fd-meta">2 • Signal or Noise?</div><h2>Does this deserve your attention — or is it simply competing for it?</h2><div class="choices"><button class="choice" onclick="choose(this,'This keeps repeating')">This keeps repeating</button><button class="choice" onclick="choose(this,'This feels unusually important')">This feels unusually important</button><button class="choice" onclick="choose(this,'This may just be noise')">This may just be noise</button><button class="choice" onclick="choose(this,'I do not know yet')">I don’t know yet</button></div><div class="fd-actions"><button class="btn" onclick="go(2)">← Back</button><button class="btn primary" onclick="go(4)">Look underneath →</button></div></div>
-<div class="fd-step" id="fd4"><div class="fd-meta">3 • The Signal Under the Signal</div><h2>What may be underneath the first thing you noticed?</h2><p>A feeling. A fear. A need. A pattern. An unfinished conversation. Stay curious without forcing certainty.</p><textarea id="under" placeholder="Underneath this, I wonder if..."></textarea><div class="fd-actions"><button class="btn" onclick="go(3)">← Back</button><button class="btn primary" onclick="go(5)">Continue →</button></div></div>
-<div class="fd-step" id="fd5"><div class="fd-meta">4 • Identify Needs</div><h2>What might this be asking from you right now?</h2><p>Attention? Information? Rest? Support? A boundary? A conversation? Action? More time?</p><textarea id="needs" placeholder="What this may need is..."></textarea><div class="fd-actions"><button class="btn" onclick="go(4)">← Back</button><button class="btn primary" onclick="go(6)">Continue →</button></div></div>
-<div class="fd-step" id="fd6"><div class="fd-meta">5 • Nurture the Long Harvest</div><h2>What needs time? Allow it.</h2><p>Some things need movement. Some need room. What could you stop forcing long enough to observe?</p><textarea id="grace" placeholder="I can give this time by..."></textarea><div class="fd-actions"><button class="btn" onclick="go(5)">← Back</button><button class="btn primary" onclick="go(7)">Start the conversation →</button></div></div>
-<div class="fd-step" id="fd7"><div class="fd-meta">6 • Bring it with you</div><h2>What would you want to talk through with real people?</h2><p>You do not need a conclusion. Bring the thing that still has energy, tension, curiosity, or uncertainty around it.</p><textarea id="conversation" placeholder="The conversation I want to bring is..."></textarea><div class="fd-actions"><button class="btn" onclick="go(6)">← Back</button><button class="btn primary" onclick="showSummary()">See what I’m bringing →</button></div></div>
-<div class="fd-step" id="fd8"><div class="fd-meta">You’ve already started</div><h2>Here’s what became clearer.</h2><div class="summary-grid" id="summary"></div><div class="note" style="margin-top:14px"><strong>Your SIGNAL is saved.</strong> If you choose to register, we’ll keep this reflection connected to your event record.</div><div class="fd-actions"><button class="btn" onclick="go(7)">← Revisit</button><button class="btn gold" onclick="go(9)">Complete registration →</button></div></div>
-<div class="fd-step" id="fd9"><div class="fd-meta">Conversation Lab registration</div><h2>Only what’s still missing.</h2><div class="summary-grid"><input id="last" placeholder="Last name"><input id="mobile" placeholder="Mobile number"></div><label style="display:flex;gap:10px;margin-top:14px;align-items:flex-start;color:var(--ink-soft);font-size:13px"><input id="share" type="checkbox" checked style="width:auto;margin-top:3px"><span>Share my SIGNAL reflection with Jaymie before the Lab so the conversation can begin deeper.</span></label><div class="note" style="margin-top:14px">When you register, your event record and SIGNAL reflection are saved together.</div><div class="fd-actions"><button class="btn" onclick="go(8)">← Back</button><button class="btn primary" onclick="complete()">Register + save SIGNAL →</button></div></div>
-<div class="fd-step" id="fd10"><div class="fd-meta">Registration submitted</div><h2>Come curious. Leave with greater clarity.</h2><p>Your registration has been submitted to TEHFL.</p><div class="note" id="completeText"></div><div class="fd-actions"><a class="btn" href="signal.html">Back to SIGNAL</a><button class="btn primary" onclick="resetFlow()">Run again</button></div></div>
-</div></div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SIGNAL Conversation Lab</title>
+<meta name="description" content="Bring what’s on your mind. Start the conversation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500;600&family=Italiana&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#082e38;--soft:#52676a;--wine:#6f1f31;--cream:#f6eee4;--paper:#fbf7f1;--gold:#b88c4c;--line:rgba(150,112,67,.35);--teal:#0d3b43;--shadow:0 18px 48px rgba(58,34,22,.15)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;background:linear-gradient(180deg,#f8f2ea,#efe3d5)}button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.shell{width:min(1388px,calc(100% - 40px));margin:18px auto;background:#f8f2ea;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(142,102,58,.15)}
+.hero{position:relative;min-height:710px;overflow:hidden}.hero-photo{position:absolute;inset:0 0 0 43%;background:url("assets/signal-hero-live.jpg") center/cover no-repeat}.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#f8f2ea 0%,rgba(248,242,234,.92) 15%,rgba(248,242,234,.35) 37%,transparent 62%),linear-gradient(180deg,transparent 60%,rgba(239,226,210,.55))}
+.topbar{position:relative;z-index:4;display:grid;grid-template-columns:1.3fr 1fr auto;gap:30px;align-items:start;padding:28px 70px 0}.brand{display:flex;gap:12px;align-items:flex-start}.rings{position:relative;width:86px;height:86px;flex:0 0 86px;margin-top:-8px}.rings i{position:absolute;border:1.6px solid var(--gold);border-radius:50%;border-right-color:transparent;transform:rotate(-15deg)}.rings i:nth-child(1){inset:0}.rings i:nth-child(2){inset:9px}.rings i:nth-child(3){inset:18px}.rings i:nth-child(4){inset:27px}.logo{font-family:"Italiana",serif;font-size:48px;line-height:.95;letter-spacing:.16em;white-space:nowrap}.logo-sub{font-family:"Cormorant Garamond",serif;font-size:27px;line-height:1}.navlinks{display:flex;justify-content:center;gap:30px;padding-top:10px;font-size:10px;text-transform:uppercase;letter-spacing:.2em;font-weight:600}.pill{border-radius:999px;border:1px solid #8c5060;background:linear-gradient(#83384a,#6b2132);color:#fff6ef;padding:13px 24px;box-shadow:0 7px 18px rgba(85,30,44,.2)}
+.hero-copy{position:relative;z-index:4;width:54%;padding:46px 0 70px 88px}.eyebrow{display:flex;align-items:center;gap:14px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;font-weight:600}.eyebrow:before{content:"";width:40px;height:1px;background:var(--gold)}h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(72px,7.2vw,106px);line-height:.84;letter-spacing:-.045em;margin:26px 0 0}h1 em{display:block;color:var(--wine);font-weight:500}.hero-copy p{font-size:16px;line-height:1.48;max-width:510px}.rule{width:38px;height:1px;background:var(--gold);margin:22px 0 14px}.promise{font-family:"Cormorant Garamond",serif;font-size:22px;line-height:1.1}.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}.cta{min-height:54px;padding:0 30px;border-radius:29px;border:1px solid #8e4a59;background:linear-gradient(#87384b,#6d2032);color:#fff7ee;font-family:"Cormorant Garamond",serif;font-size:21px;box-shadow:0 8px 22px rgba(75,26,38,.2)}.ghost{background:rgba(255,250,245,.75);color:var(--ink);border-color:var(--gold)}
+.process{position:relative;z-index:5;margin-top:-22px;padding:34px 70px 26px;background:linear-gradient(rgba(251,247,240,.9),#f1e6d7);border-top:1px solid rgba(255,255,255,.8)}.process-grid{max-width:1060px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr)}.proc{text-align:center;font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;min-height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative}.proc:not(:last-child):after{content:"";position:absolute;right:0;top:22px;width:1px;height:43px;background:var(--line)}.proc .ico{font-family:"Cormorant Garamond",serif;font-size:34px;color:var(--gold)}
+.intake{position:relative;background:linear-gradient(180deg,#f6eee4,#f3e8dc);min-height:760px;padding:64px 6vw 88px;overflow:hidden}.intake:before{content:"";position:absolute;left:-140px;top:-100px;width:520px;height:520px;border-radius:50%;border:1px solid rgba(184,140,76,.65);background:radial-gradient(circle at 40% 35%,rgba(44,115,111,.4),transparent 40%),linear-gradient(150deg,#123f45,#082a31)}.side{position:absolute;z-index:2;left:6vw;top:180px;width:190px;color:#f8f0e7;text-transform:uppercase;letter-spacing:.22em;line-height:1.55;font-size:14px}.side:after{content:"";display:block;width:42px;height:2px;background:var(--gold);margin-top:16px}
+.card{position:relative;z-index:3;width:min(850px,calc(100% - 300px));margin-left:auto;background:rgba(251,247,241,.97);border:1px solid rgba(157,119,76,.35);border-radius:46px 0 46px 46px;padding:40px 54px 44px;box-shadow:0 20px 55px rgba(55,31,18,.11)}.step{display:none}.step.active{display:block}.step-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px}.meta{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--wine)}.progress{display:flex;gap:8px}.progress i{width:13px;height:13px;border-radius:50%;border:1px solid var(--gold);display:block;position:relative}.progress i.on:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--wine)}.card h2{font-family:"Cormorant Garamond",serif;font-size:54px;line-height:1.02;font-weight:500;margin:0 0 14px;text-align:center}.card h2 span{color:var(--wine)}.card p{color:var(--soft);font-size:16px;line-height:1.55;text-align:center;max-width:690px;margin:0 auto 22px}
+textarea,input{width:100%;border:1px solid rgba(157,119,76,.48);border-radius:14px;background:#fffdfa;color:var(--ink);padding:16px 17px;outline:none}textarea{min-height:148px;resize:vertical}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.choices{display:grid;grid-template-columns:1fr 1fr;gap:11px}.choice{border:1px solid rgba(157,119,76,.36);border-radius:999px;padding:13px 16px;background:#f4e2df;color:#513640;text-align:center;font-weight:600}.choice.selected{border-color:var(--wine);background:#7b2b3d;color:#fff8f1}.note{background:#edf1ec;border:1px solid rgba(70,104,99,.15);border-radius:14px;padding:13px 15px;color:#53696b;font-size:13px;line-height:1.5}.actions{display:flex;justify-content:space-between;gap:12px;margin-top:22px}.btn{border-radius:999px;padding:13px 23px;border:1px solid rgba(157,119,76,.4);background:#fffaf5;color:var(--ink);font-weight:600}.btn.primary{min-width:230px;background:linear-gradient(#154d53,#0b353c);color:#fff;border-color:#0b353c}.btn.gold{background:linear-gradient(#c5a15a,#ac8744);color:#18353a;border-color:#a7823f}.btn:disabled{opacity:.55;cursor:not-allowed}
+.summary{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sum{background:#fffdfa;border:1px solid rgba(157,119,76,.35);border-radius:14px;padding:13px}.sum b{display:block;color:var(--wine);font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}.reflection{border:1px solid rgba(157,119,76,.34);background:linear-gradient(145deg,#fffdf8,#f5eadf);border-radius:22px;padding:22px;margin:22px 0 16px}.reflection b{display:block;color:var(--wine);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}.reflection .hook{font-family:"Cormorant Garamond",serif;font-size:24px;line-height:1.28;color:#0d3b43}.event-tease{margin-top:18px;padding:20px 22px;border-radius:18px;background:linear-gradient(145deg,#123f45,#082e38);color:#fff}.event-tease small{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#e2c998}.event-tease h3{font-family:"Cormorant Garamond",serif;font-size:31px;font-weight:500;margin:8px 0 5px}.event-tease p{color:#eaf0ec!important;text-align:left!important;margin:0!important;font-size:14px!important}.answers{margin-top:14px;border:1px solid rgba(157,119,76,.28);border-radius:14px;background:rgba(255,253,248,.65);padding:0 14px}.answers summary{cursor:pointer;padding:13px 0;font-size:12px;font-weight:600;color:#6f5e4e}.answers .summary{padding:0 0 14px}.consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;color:var(--soft);font-size:13px}.consent input{width:auto;margin-top:4px}.calendar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.footer{text-align:center;padding:24px;color:#7b6a5a;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+@media(max-width:900px){.shell{width:100%;margin:0;border-radius:0}.topbar{padding:22px;display:flex;justify-content:space-between;align-items:center}.rings{width:52px;height:52px;flex-basis:52px}.logo{font-size:32px}.logo-sub{font-size:19px}.navlinks{display:none}.pill{padding:10px 17px;font-size:12px}.hero{display:flex;flex-direction:column;min-height:auto}.hero-photo{position:relative;inset:auto;width:100%;height:58vw;min-height:420px;order:1;background-position:center 45%}.topbar{order:0}.hero-copy{order:2;width:100%;padding:34px 28px 56px;margin-top:-72px;background:linear-gradient(180deg,transparent,#f8f2ea 16%,#f8f2ea 100%)}h1{font-size:clamp(64px,16vw,94px)}.process{margin-top:0;padding:28px 18px 24px}.process-grid{grid-template-columns:1fr 1fr;gap:20px 0}.proc:nth-child(2):after{display:none}.intake{padding:40px 18px 70px}.intake:before,.side{display:none}.card{width:100%;margin:0;border-radius:28px;padding:30px 22px 34px}.card h2{font-size:44px}.grid,.choices,.summary,.calendar{grid-template-columns:1fr}}
+@media(max-width:560px){.topbar{padding:16px 14px 10px}.rings{width:42px;height:42px;flex-basis:42px}.logo{font-size:26px}.logo-sub{font-size:15px}.pill{padding:9px 13px;font-size:10px}.hero-photo{min-height:360px;height:76vw;background-position:57% 50%}.hero-copy{padding:42px 20px 48px;margin-top:-58px}h1{font-size:59px}.hero-copy p{font-size:15px}.cta{width:100%}.ghost{display:none}.card{padding:26px 17px 30px;border-radius:24px}.card h2{font-size:38px}.card p{font-size:15px}.actions{display:grid;grid-template-columns:1fr}.actions .btn{width:100%}.actions span{display:none}.proc{font-size:8px}}
+</style></head><body>
+<main class="shell"><section class="hero" id="top"><div class="topbar"><a class="brand" href="#top"><span class="rings"><i></i><i></i><i></i><i></i></span><span><span class="logo">SIGNAL</span><br><span class="logo-sub">Conversation Lab™</span></span></a><div class="navlinks"><a href="#top">About</a><a href="#intake">The Experience</a><a href="signal.html">SIGNAL</a></div><button class="pill" onclick="startFlow()">Save My Spot</button></div><div class="hero-photo"></div><div class="hero-copy"><div class="eyebrow">October 29 <span>•</span> Introductory Experience</div><h1>What are you <em>noticing?</em></h1><p>We notice patterns. Frustrations. Repeated thoughts.<br>Tensions. Quiet inner nudges. And still, we stay busy,<br>push through, and ignore them — until we wonder<br>why nothing changes.</p><p>It’s easy to fall into that trap.</p><div class="rule"></div><div class="promise">You don’t need the answer yet.<br>Just start with what you’re noticing.</div><div class="hero-actions"><button class="cta" onclick="startFlow()">Start the Conversation →</button><button class="cta ghost" onclick="startFlow()">Save My Spot</button></div></div></section>
+<section class="process"><div class="process-grid"><div class="proc"><div class="ico">◔</div><div>Slow down<br>and listen</div></div><div class="proc"><div class="ico">◎</div><div>Notice<br>what’s real</div></div><div class="proc"><div class="ico">✧</div><div>Explore<br>what matters</div></div><div class="proc"><div class="ico">⌁</div><div>Take a more<br>aligned next step</div></div></div></section>
+<section class="intake" id="intake"><div class="side">A small conversation can shift a bigger story.</div><div class="card">
+<div class="step active" id="fd0"><div class="step-top"><div class="meta">Welcome</div></div><h2>Bring what’s on your mind.</h2><p>Not what sounds important. Not what you think you should talk about. Just the thing that naturally keeps asking for your attention.</p><div class="note">Start with one real thing that has your attention. Your progress is saved as you go.</div><div class="actions"><span></span><button class="btn primary" onclick="go(1)">Start the conversation →</button></div></div>
+<div class="step" id="fd1"><div class="step-top"><div class="meta">1 • Signal Spotting</div><div class="progress"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div><h2>What are you <span>noticing?</span></h2><p>Do not explain it perfectly yet. Just name what keeps surfacing.</p><textarea id="notice" placeholder="Something I keep noticing is..."></textarea><div class="actions"><button class="btn" onclick="go(0)">← Back</button><button class="btn primary" onclick="need('notice',2)">Continue →</button></div></div>
+<div class="step" id="fd2"><div class="step-top"><div class="meta">Save your place</div></div><h2>What should we call you?</h2><p>We ask for just enough information to save your progress on this device. The rest can wait until registration.</p><div class="grid"><input id="first" placeholder="First name" autocomplete="given-name"><input id="email" type="email" placeholder="Email" autocomplete="email"></div><div class="note" id="contactError" style="display:none;margin-top:12px"></div><div class="actions"><button class="btn" onclick="go(1)">← Back</button><button class="btn primary" onclick="contactNext()">Save & continue →</button></div></div>
+<div class="step" id="fd3"><div class="step-top"><div class="meta">2 • Signal or Noise?</div><div class="progress"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div></div><h2>Does this deserve your attention — or is it simply competing for it?</h2><div class="choices"><button class="choice" onclick="choose(this,'This keeps repeating')">This keeps repeating</button><button class="choice" onclick="choose(this,'This feels unusually important')">This feels unusually important</button><button class="choice" onclick="choose(this,'This may just be noise')">This may just be noise</button><button class="choice" onclick="choose(this,'I do not know yet')">I don’t know yet</button></div><div class="actions"><button class="btn" onclick="go(2)">← Back</button><button class="btn primary" onclick="go(4)">Look underneath →</button></div></div>
+<div class="step" id="fd4"><div class="step-top"><div class="meta">3 • The Signal Under the Signal</div><div class="progress"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div></div><h2>What may be underneath the first thing you noticed?</h2><p>A feeling. A fear. A need. A pattern. An unfinished conversation. Stay curious without forcing certainty.</p><textarea id="under" placeholder="Underneath this, I wonder if..."></textarea><div class="actions"><button class="btn" onclick="go(3)">← Back</button><button class="btn primary" onclick="go(5)">Continue →</button></div></div>
+<div class="step" id="fd5"><div class="step-top"><div class="meta">4 • Identify Needs</div><div class="progress"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div></div><h2>What might this be asking from you right now?</h2><p>Attention? Information? Rest? Support? A boundary? A conversation? Action? More time?</p><textarea id="needs" placeholder="What this may need is..."></textarea><div class="actions"><button class="btn" onclick="go(4)">← Back</button><button class="btn primary" onclick="go(6)">Continue →</button></div></div>
+<div class="step" id="fd6"><div class="step-top"><div class="meta">5 • Nurture the Long Harvest</div><div class="progress"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div></div><h2>What needs time? <span>Allow it.</span></h2><p>Some things need movement. Some need room. What could you stop forcing long enough to observe?</p><textarea id="grace" placeholder="I can give this time by..."></textarea><div class="actions"><button class="btn" onclick="go(5)">← Back</button><button class="btn primary" onclick="go(7)">Start the conversation →</button></div></div>
+<div class="step" id="fd7"><div class="step-top"><div class="meta">6 • Bring it with you</div><div class="progress"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div></div><h2>What would you want to talk through with real people?</h2><p>You do not need a conclusion. Bring the thing that still has energy, tension, curiosity, or uncertainty around it.</p><textarea id="conversation" placeholder="The conversation I want to bring is..."></textarea><div class="actions"><button class="btn" onclick="go(6)">← Back</button><button class="btn primary" onclick="showSummary()">See what I’m bringing →</button></div></div>
+<div class="step" id="fd8"><div class="step-top"><div class="meta">Your SIGNAL reflection</div></div><h2>You’re already <span>noticing something.</span></h2><p>A quick reflection to carry with you into the Conversation Lab.</p><div class="reflection"><b>Your SIGNAL reflection</b><div class="hook" id="reflectionHook"></div><div class="event-tease"><small>October 29 • SIGNAL Conversation Lab</small><h3>Bring this with you.</h3><p>You don’t need to have it figured out before you come. The Conversation Lab is designed to help you look at what you’re noticing from a different angle, hear new perspectives, and leave with a clearer sense of what deserves action, what deserves conversation, and what may simply need time.</p></div></div><details class="answers"><summary>See the answers this reflection came from</summary><div class="summary" id="summary"></div></details><div class="actions"><button class="btn" onclick="go(7)">← Revisit</button><button class="btn gold" onclick="go(9)">Complete registration →</button></div></div>
+<div class="step" id="fd9"><div class="step-top"><div class="meta">Conversation Lab registration</div></div><h2>Only what’s still missing.</h2><div class="grid"><input id="last" placeholder="Last name" autocomplete="family-name"><input id="mobile" inputmode="tel" placeholder="Mobile number" autocomplete="tel"></div><label class="consent"><input id="share" type="checkbox" checked><span>Share my SIGNAL reflection with Jaymie before the Lab so the conversation can begin deeper.</span></label><div class="actions"><button class="btn" onclick="go(8)">← Back</button><button class="btn primary" id="registerBtn" onclick="complete()">Register + save SIGNAL →</button></div></div>
+<div class="step" id="fd10"><div class="step-top"><div class="meta">Registration submitted</div></div><h2>Come curious. Leave with greater clarity.</h2><p>Your registration and SIGNAL reflection have been saved.</p><div class="note" id="completeText"></div><div class="calendar"><a class="btn gold" id="gcal" target="_blank" rel="noopener">Add to Google Calendar</a><button class="btn" onclick="downloadICS()">Apple / Outlook Calendar</button></div><div class="actions"><a class="btn" href="signal.html">About SIGNAL</a><button class="btn primary" onclick="resetFlow()">Start a new reflection</button></div></div>
+</div></section><div class="footer">SIGNAL Conversation Lab • October 29, 2026 • 6:00–7:30 PM Eastern</div></main>
 <script>
 const FORM_ENDPOINT="https://docs.google.com/forms/d/e/1FAIpQLSevSeZiBJRZMCleMm2TcJQOjP_pS94YrMBQhaaKgrffP9Sdeg/formResponse";
-const FORM_FIELDS={
-  contactId:"entry.301762151",
-  firstName:"entry.58780466",
-  lastName:"entry.1559895487",
-  email:"entry.1787733184",
-  mobile:"entry.610731937",
-  notice:"entry.1179189163",
-  signalVsNoise:"entry.1019833845",
-  signalUnderSignal:"entry.800933330",
-  needs:"entry.88849145",
-  grace:"entry.821090000",
-  conversation:"entry.1932546411",
-  sharePreference:"entry.946346664",
-  event:"entry.84973371",
-  source:"entry.276495509",
-  startedAt:"entry.1206892229",
-  signalCompleted:"entry.303119",
-};
-const key="signalFrontDoorV1";
-const idKey="signalRegistrantIdV1";
-const startedKey="signalStartedAtV1";
-let signalChoice="";
-let registrantId=localStorage.getItem(idKey);
-if(!registrantId){
-  registrantId="SIG-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,7).toUpperCase();
-  localStorage.setItem(idKey,registrantId);
-}
-if(!localStorage.getItem(startedKey)) localStorage.setItem(startedKey,new Date().toISOString());
-
-function val(id){return(document.getElementById(id)?.value||"").trim()}
-function go(n){
-  const active=document.activeElement;
-  if(active && typeof active.blur==="function") active.blur();
-  const next=document.getElementById("fd"+n);
-  saveLocal();
-
-  if(document.body.classList.contains("mobile-linear")){
-    if(next){
-      next.classList.add("mobile-reached");
-      setTimeout(()=>next.scrollIntoView({block:"start",behavior:"auto"}),20);
-    }
-    return;
-  }
-
-  document.querySelectorAll(".fd-step").forEach(x=>{
-    x.classList.remove("active");
-    x.setAttribute("aria-hidden","true");
-  });
-  next.classList.add("active");
-  next.setAttribute("aria-hidden","false");
-  window.scrollTo(0,0);
-}
-function need(id,n){if(!val(id)){document.getElementById(id).focus();return}go(n)}
-function choose(el,v){
-  signalChoice=v;
-  document.querySelectorAll(".choice").forEach(x=>x.classList.remove("selected"));
-  el.classList.add("selected");
-  saveLocal();
-}
-function data(){
-  return{
-    registrantId,
-    startedAt:localStorage.getItem(startedKey),
-    firstName:val("first"),
-    lastName:val("last"),
-    email:val("email"),
-    mobile:val("mobile"),
-    notice:val("notice"),
-    signalVsNoise:signalChoice,
-    signalUnderSignal:val("under"),
-    needs:val("needs"),
-    grace:val("grace"),
-    conversation:val("conversation"),
-    sharePreference:(document.getElementById("share")?.checked??true)?"Full Reflection":"Private",
-    event:"Oct 29 Conversation Lab",
-    source:"SIGNAL Front Door"
-  }
-}
-function saveLocal(){localStorage.setItem(key,JSON.stringify(data()))}
-function esc(s){return(s||"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]))}
-
-async function submitRegistration(){
-  const d=data();
-  const privateMode=d.sharePreference==="Private";
-  const targetName="googleFormSink";
-  let sink=document.querySelector('iframe[name="'+targetName+'"]');
-  if(!sink){
-    sink=document.createElement("iframe");
-    sink.name=targetName;
-    sink.setAttribute("aria-hidden","true");
-    sink.style.width="0";
-    sink.style.height="0";
-    sink.style.border="0";
-    sink.style.position="absolute";
-    sink.style.left="-9999px";
-    document.body.appendChild(sink);
-  }
-  const form=document.createElement("form");
-  form.method="POST";
-  form.action=FORM_ENDPOINT;
-  form.target=targetName;
-  const add=(key,value)=>{
-    const input=document.createElement("input");
-    input.type="hidden";
-    input.name=FORM_FIELDS[key];
-    input.value=value||"";
-    form.appendChild(input);
-  };
-  add("contactId",d.registrantId);
-  add("firstName",d.firstName);
-  add("lastName",d.lastName);
-  add("email",d.email);
-  add("mobile",d.mobile);
-  add("notice",privateMode?"":d.notice);
-  add("signalVsNoise",privateMode?"":d.signalVsNoise);
-  add("signalUnderSignal",privateMode?"":d.signalUnderSignal);
-  add("needs",privateMode?"":d.needs);
-  add("grace",privateMode?"":d.grace);
-  add("conversation",privateMode?"":d.conversation);
-  add("sharePreference",d.sharePreference);
-  add("event",d.event);
-  add("source",d.source);
-  add("startedAt",d.startedAt);
-  add("signalCompleted","Yes");
-  document.body.appendChild(form);
-  form.submit();
-  setTimeout(()=>form.remove(),1000);
-  await new Promise(resolve=>setTimeout(resolve,1200));
-  return true;
-}
-
-async function contactNext(){
-  const err=document.getElementById("contactError");
-  if(err){err.style.display="none";err.textContent=""}
-  if(!val("first")){
-    if(err){err.textContent="Please enter your first name.";err.style.display="block"}
-    first.focus();return
-  }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val("email"))){
-    if(err){err.textContent="Please enter a valid email address.";err.style.display="block"}
-    email.focus();return
-  }
-  saveLocal();
-  document.querySelectorAll("#fd2 input").forEach(el=>el.blur());
-  go(3);
-}
-
-async function showSummary(){
-  saveLocal();
-  document.getElementById("fd8")?.classList.add("mobile-reached");
-  let d=data(),rows=[
-    ["What you’re noticing",d.notice],
-    ["Signal vs. Noise",d.signalVsNoise||"Still deciding"],
-    ["The Signal Under the Signal",d.signalUnderSignal||"Still forming"],
-    ["What this may need",d.needs||"Still forming"],
-    ["What needs time / grace",d.grace||"Still forming"],
-    ["Conversation to bring",d.conversation||"Still forming"]
-  ];
-  summary.innerHTML=rows.map(r=>`<div class="sum"><b>${esc(r[0])}</b>${esc(r[1])}</div>`).join("");
-  go(8);
-}
-
-async function complete(){
-  if(!val("last")){last.focus();return}
-  if(!val("mobile")){mobile.focus();return}
-  saveLocal();
-  const btn=document.activeElement;
-  if(btn){btn.disabled=true;btn.textContent="Registering…"}
-  const ok=await submitRegistration();
-  if(btn){btn.disabled=false;btn.textContent="Register + save SIGNAL →"}
-  let d=data();
-  completeText.innerHTML=`<strong>${esc(d.firstName)} ${esc(d.lastName)}</strong><br>${esc(d.email)} • ${esc(d.mobile)}<br><br>Status: Registered • Share preference: ${esc(d.sharePreference)}${ok?"":"<br><br><strong>Connection issue:</strong> your browser kept your answers, but the tracker may need another submission."}`;
-  document.getElementById("fd10")?.classList.add("mobile-reached");
-  go(10);
-}
-
-function resetFlow(){
-  localStorage.removeItem(key);
-  localStorage.removeItem(idKey);
-  localStorage.removeItem(startedKey);
-  location.reload();
-}
-
-(function restore(){
-  let x=localStorage.getItem(key);
-  if(!x)return;
-  try{
-    let d=JSON.parse(x);
-    const map={first:"firstName",email:"email",notice:"notice",under:"signalUnderSignal",needs:"needs",grace:"grace",conversation:"conversation",last:"lastName",mobile:"mobile"};
-    Object.entries(map).forEach(([id,k])=>{let el=document.getElementById(id);if(el&&d[k])el.value=d[k]});
-    signalChoice=d.signalVsNoise||"";
-    if(signalChoice){
-      document.querySelectorAll(".choice").forEach(el=>{if(el.textContent.trim()===signalChoice)el.classList.add("selected")});
-    }
-    if(document.getElementById("share") && d.sharePreference==="Private") document.getElementById("share").checked=false;
-  }catch(e){}
-})();
-
-document.querySelectorAll(".fd-step").forEach(x=>x.setAttribute("aria-hidden",x.classList.contains("active")?"false":"true"));
-document.querySelectorAll("textarea,input").forEach(el=>el.addEventListener("input",saveLocal));
+const F={contactId:"entry.301762151",firstName:"entry.58780466",lastName:"entry.1559895487",email:"entry.1787733184",mobile:"entry.610731937",notice:"entry.1179189163",signalVsNoise:"entry.1019833845",signalUnderSignal:"entry.800933330",needs:"entry.88849145",grace:"entry.821090000",conversation:"entry.1932546411",sharePreference:"entry.946346664",event:"entry.84973371",source:"entry.276495509",startedAt:"entry.1206892229",signalCompleted:"entry.303119"};
+const key="signalFrontDoorV2",idKey="signalRegistrantIdV2",startedKey="signalStartedAtV2";
+let choice="",submitting=false,registrantId=localStorage.getItem(idKey);
+if(!registrantId){registrantId="SIG-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,7).toUpperCase();localStorage.setItem(idKey,registrantId)}
+if(!localStorage.getItem(startedKey))localStorage.setItem(startedKey,new Date().toISOString());
+const $=id=>document.getElementById(id),val=id=>($(id)?.value||"").trim(),esc=s=>(s||"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+function state(){return{firstName:val("first"),lastName:val("last"),email:val("email"),mobile:val("mobile"),notice:val("notice"),signalVsNoise:choice,signalUnderSignal:val("under"),needs:val("needs"),grace:val("grace"),conversation:val("conversation"),sharePreference:($("share")?.checked??true)?"Full Reflection":"Private"}}
+function save(){localStorage.setItem(key,JSON.stringify(state()))}
+function startFlow(){$("intake").scrollIntoView({behavior:"smooth",block:"start"});go(0)}
+function go(n){save();document.querySelectorAll(".step").forEach(x=>x.classList.remove("active"));$("fd"+n).classList.add("active");setTimeout(()=>$("intake").scrollIntoView({behavior:window.innerWidth<700?"auto":"smooth",block:"start"}),20)}
+function need(id,n){if(!val(id)){$(id).focus();return}go(n)}
+function choose(el,v){choice=v;document.querySelectorAll(".choice").forEach(x=>x.classList.remove("selected"));el.classList.add("selected");save()}
+function contactNext(){const e=$("contactError");e.style.display="none";if(!val("first")){e.textContent="Please enter your first name.";e.style.display="block";$("first").focus();return}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val("email"))){e.textContent="Please enter a valid email address.";e.style.display="block";$("email").focus();return}go(3)}
+function buildReflection(d){const need=(d.needs||"more honesty, space, or clarity").replace(/^[Ww]hat this may need is\s*/,"").trim();return \`You’re already noticing something worth paying attention to. From what you shared, there’s a real tension here between what you’ve been carrying and what may be asking for \${need.charAt(0).toLowerCase()+need.slice(1)}.\`}
+function showSummary(){save();const d=state(),rows=[["What you’re noticing",d.notice],["Signal vs. Noise",d.signalVsNoise||"Still deciding"],["The Signal Under the Signal",d.signalUnderSignal||"Still forming"],["What this may need",d.needs||"Still forming"],["What needs time / grace",d.grace||"Still forming"],["Conversation to bring",d.conversation||"Still forming"]];$("summary").innerHTML=rows.map(r=>\`<div class="sum"><b>\${esc(r[0])}</b>\${esc(r[1])}</div>\`).join("");$("reflectionHook").textContent=buildReflection(d);go(8)}
+function add(form,name,value){const i=document.createElement("input");i.type="hidden";i.name=name;i.value=value||"";form.appendChild(i)}
+async function submitLive(d){const sentKey="signalSubmittedV2:"+registrantId;if(localStorage.getItem(sentKey))return "already";let sink=document.querySelector('iframe[name="signalFormSink"]');if(!sink){sink=document.createElement("iframe");sink.name="signalFormSink";sink.setAttribute("aria-hidden","true");sink.style.cssText="width:0;height:0;border:0;position:absolute;left:-9999px";document.body.appendChild(sink)}const form=document.createElement("form");form.method="POST";form.action=FORM_ENDPOINT;form.target="signalFormSink";const priv=d.sharePreference==="Private";add(form,F.contactId,registrantId);add(form,F.firstName,d.firstName);add(form,F.lastName,d.lastName);add(form,F.email,d.email);add(form,F.mobile,d.mobile);add(form,F.notice,priv?"":d.notice);add(form,F.signalVsNoise,priv?"":d.signalVsNoise);add(form,F.signalUnderSignal,priv?"":d.signalUnderSignal);add(form,F.needs,priv?"":d.needs);add(form,F.grace,priv?"":d.grace);add(form,F.conversation,priv?"":d.conversation);add(form,F.sharePreference,d.sharePreference);add(form,F.event,"Oct 29 Conversation Lab");add(form,F.source,"SIGNAL Front Door V2");add(form,F.startedAt,localStorage.getItem(startedKey));add(form,F.signalCompleted,"Yes");document.body.appendChild(form);form.submit();localStorage.setItem(sentKey,new Date().toISOString());setTimeout(()=>form.remove(),1000);await new Promise(r=>setTimeout(r,1200));return "sent"}
+async function complete(){if(submitting)return;const d=state();if(!d.lastName){$("last").focus();return}if(!d.mobile){$("mobile").focus();return}submitting=true;$("registerBtn").disabled=true;$("registerBtn").textContent="Registering…";const result=await submitLive(d);$("completeText").innerHTML=\`<strong>\${esc(d.firstName)} \${esc(d.lastName)}</strong><br>\${esc(d.email)} • \${esc(d.mobile)}<br><br>Status: Registered • Share preference: \${esc(d.sharePreference)}\${result==="already"?"<br><br>Your registration was already received, so we did not create a duplicate row.":""}\`;$("registerBtn").textContent="Registered";go(10);submitting=false}
+function resetFlow(){localStorage.removeItem(key);localStorage.removeItem(idKey);localStorage.removeItem(startedKey);location.reload()}
+function downloadICS(){const ics=\`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//SIGNAL Conversation Lab//EN\r\nBEGIN:VEVENT\r\nUID:signal-oct29-2026@tehfl.github.io\r\nDTSTAMP:20261010T000000Z\r\nDTSTART;TZID=America/New_York:20261029T180000\r\nDTEND;TZID=America/New_York:20261029T193000\r\nSUMMARY:SIGNAL Conversation Lab\r\nDESCRIPTION:Come curious. Leave with greater clarity. SIGNAL Conversation Lab with Jaymie Chapple.\r\nEND:VEVENT\r\nEND:VCALENDAR\`;const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([ics],{type:"text/calendar;charset=utf-8"}));a.download="SIGNAL-Conversation-Lab-Oct-29-2026.ics";document.body.appendChild(a);a.click();URL.revokeObjectURL(a.href);a.remove()}
+$("gcal").href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("SIGNAL Conversation Lab")+"&dates=20261029T220000Z%2F20261029T233000Z&details="+encodeURIComponent("Come curious. Leave with greater clarity. SIGNAL Conversation Lab with Jaymie Chapple.");
+(function restore(){try{const d=JSON.parse(localStorage.getItem(key)||"null");if(!d)return;const map={first:"firstName",last:"lastName",email:"email",mobile:"mobile",notice:"notice",under:"signalUnderSignal",needs:"needs",grace:"grace",conversation:"conversation"};Object.entries(map).forEach(([id,k])=>{if($(id)&&d[k])$(id).value=d[k]});choice=d.signalVsNoise||"";if(choice)document.querySelectorAll(".choice").forEach(x=>{if(x.textContent.trim()===choice)x.classList.add("selected")});if(d.sharePreference==="Private")$("share").checked=false}catch(e){}})();
+document.querySelectorAll("textarea,input").forEach(el=>el.addEventListener("input",save));
 </script></body></html>
